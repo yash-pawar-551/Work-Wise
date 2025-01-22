@@ -1,2 +1,3 @@
 # Work-Wise
-Job listing website
+Job listing website - Frontend
+## A website developed using ReactJS
