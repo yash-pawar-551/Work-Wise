@@ -1,10 +1,7 @@
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <h2>React App</h2>
-    </>
+    <div>App</div>
   )
 }
 
