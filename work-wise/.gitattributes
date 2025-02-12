@@ -1,0 +1,26 @@
+# Normalize text files to LF
+* text=auto
+
+# Ensure JavaScript, TypeScript, and JSX/TSX files use LF
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+
+# Ensure HTML and CSS files use LF
+*.html text eol=lf
+*.css text eol=lf
+
+# Ensure configuration files use LF
+*.json text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+
+# Keep binary files untouched
+*.png binary
+*.jpg binary
+*.gif binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.zip binary
