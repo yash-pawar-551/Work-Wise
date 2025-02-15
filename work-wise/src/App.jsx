@@ -1,3 +1,4 @@
+import {Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from "react-router-dom"
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import HomeCards from "./components/HomeCards";
