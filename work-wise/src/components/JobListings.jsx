@@ -1,14 +1,27 @@
-import jobs from '../jobs.json'
+import { useState, useEffect } from 'react'
 import JobListing from './JobListing'
 
 const JobListings = ({isHome}) => {
-  let recentJobs;
-  if(isHome == true) {
-     recentJobs = jobs.slice(0, 3);
-  }
-  else{
-    recentJobs = jobs;
-  }
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/jobs");
+        const data = await res.json();
+        setJobs(data);
+      } catch (error) {
+        console.error("Error fetching data", error)
+      }
+      finally{
+        setLoading(false);
+      }
+      
+    }
+    fetchJobs();
+
+  }, [])
     
 
   return (
@@ -18,7 +31,7 @@ const JobListings = ({isHome}) => {
             Browse Jobs
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {recentJobs.map((job) => (
+            {jobs.map((job) => (
                 <JobListing key={job.id} job={job} />
             ))}
           </div>

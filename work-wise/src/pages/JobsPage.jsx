@@ -1,4 +1,3 @@
-import React from 'react'
 import Joblistings from "../components/JobListings"
 
 const JobsPage = () => {
