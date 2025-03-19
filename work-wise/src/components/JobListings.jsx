@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import JobListing from './JobListing'
 import Spinner from './Spinner';
+import PropTypes from 'prop-types'
 
 const JobListings = ({isHome}) => {
   const [jobs, setJobs] = useState([]);
@@ -23,6 +24,7 @@ const JobListings = ({isHome}) => {
     }
     fetchJobs();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
     
 
@@ -42,6 +44,10 @@ const JobListings = ({isHome}) => {
         </div>
       </section>
   )
+}
+
+JobListings.propTypes = {
+  isHome: PropTypes.bool,
 }
 
 export default JobListings
