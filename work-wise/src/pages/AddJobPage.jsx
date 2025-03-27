@@ -1,20 +1,40 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-const AddJobPage = () => {
+  const AddJobPage = ({addJobSubmit}) => {
 
-    const [type, setType] = useState('')
+    const [type, setType] = useState('Full-Time')
     const [title, setTitle] = useState('')
     const [location, setLocation] = useState('')
     const [description, setDescription] = useState('')
-    const [salary, setSalary] = useState('')
+    const [salary, setSalary] = useState('Under $50K')
     const [companyName, setCompanyName] = useState('')
     const [companyDescription, setCompanyDescription] = useState('')
     const [companyEmail, setCompanyEmail] = useState('')
     const [companyPhone, setCompanyPhone] = useState('')
 
+    const navigate = useNavigate();
+
     const submitForm = (e) => {
-        e.preventDefault()
-        console.log(type)
+        e.preventDefault();
+
+        const newJob = {
+          title,
+          type,
+          location,
+          description,
+          salary,
+          company: {
+            name: companyName,
+            description: companyDescription,
+            companyEmail,
+            companyPhone,
+          },
+        }
+        addJobSubmit(newJob);
+
+        return navigate('/jobs');
     }
 
   return (
@@ -201,5 +221,10 @@ const AddJobPage = () => {
     </section>
   )
 }
+
+AddJobPage.propTypes = {
+  addJobSubmit: PropTypes.func,
+}
+
 
 export default AddJobPage
