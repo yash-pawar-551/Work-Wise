@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { toast } from 'react-toastify'
 
   const AddJobPage = ({addJobSubmit}) => {
 
@@ -33,6 +34,8 @@ import PropTypes from 'prop-types'
           },
         }
         addJobSubmit(newJob);
+
+        toast.success('Job added successfully!')
 
         return navigate('/jobs');
     }
