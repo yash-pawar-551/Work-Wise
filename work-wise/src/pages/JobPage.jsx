@@ -1,7 +1,8 @@
-import { useLoaderData, useParams, useNavigate } from "react-router-dom";
+import { useLoaderData,useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FaArrowLeft, FaMapMarker } from "react-icons/fa";
 import { toast } from "react-toastify";
+import PropTypes from "prop-types";
 
 const JobPage = ({deleteJob}) => {
 
@@ -116,7 +117,7 @@ const JobPage = ({deleteJob}) => {
             <div className="bg-white p-6 rounded-lg shadow-md mt-6">
               <h3 className="text-xl font-bold mb-6">Manage Job</h3>
               <Link
-                to={`/jobs/edit/${job.id}`}
+                to={`/edit-job/${job.id}`}
                 className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >Edit Job
                 </Link >
@@ -139,6 +140,10 @@ const jobLoader = async ({params}) => {
   const data = await res.json();
   return data;
 }
+
+JobPage.propTypes = {
+  deleteJob: PropTypes.func.isRequired,
+};
 
 // eslint-disable-next-line react-refresh/only-export-components
 export { JobPage as default, jobLoader };
